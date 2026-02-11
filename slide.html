@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rotazione Pagine</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            /* Nasconde le barre di scorrimento della pagina principale */
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <iframe id="display-frame" src=""></iframe>
+
+    <script>
+        // 1. ELENCO FILE: Aggiungi qui i nomi dei tuoi file HTML tra virgolette
+        const pagine = [
+            "pagina1.html",
+            "pagina2.html",
+            "pagina3.html"
+        ];
+
+        let indiceCorrente = 0;
+        const frame = document.getElementById('display-frame');
+
+        function cambiaPagina() {
+            // Carica la pagina corrente nell'iframe
+            frame.src = pagine[indiceCorrente];
+
+            // Incrementa l'indice per la prossima volta
+            indiceCorrente = (indiceCorrente + 1) % pagine.length;
+        }
+
+        // Mostra la prima pagina immediatamente
+        cambiaPagina();
+
+        // Cambia pagina ogni 8000 millisecondi (8 secondi)
+        setInterval(cambiaPagina, 8000);
+    </script>
+</body>
+
+</html>
